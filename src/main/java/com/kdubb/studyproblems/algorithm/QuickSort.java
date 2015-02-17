@@ -3,7 +3,56 @@ package com.kdubb.studyproblems.algorithm;
 import com.kdubb.studyproblems.datastructure.List;
 
 public class QuickSort {
-
+	
+	public static String sort(String str) {
+		return new String(innerSort(str.getBytes(), 0, str.length() - 1));
+	}
+	
+	public static byte[] sort(byte[] toSort) {
+		return innerSort(toSort, 0, toSort.length - 1);
+	}
+	
+	private static  byte[] innerSort(byte[] A, int lo, int hi) {
+		if(lo < hi) {
+			int p = partition(A, lo, hi);
+			innerSort(A, lo, p - 1);
+			innerSort(A, p + 1, hi);
+		}
+		
+		return A;
+	}
+	
+	private static int partition(byte[] A, int lo, int hi) {
+		int pivotIndex = (hi - lo) / 2 + lo;
+		byte pivotValue = A[pivotIndex];
+		
+		// put the chosen pivot at A[hi]
+		byte temp = A[hi];
+		A[hi] = pivotValue;
+		A[pivotIndex] = temp;
+		
+		int storeIndex = lo;
+		
+		for(int i = lo; i < hi; i++) {
+			if(A[i] < pivotValue) { 
+				// swap A[i] and A[storeIndex]
+				temp = A[i];
+				A[i] = A[storeIndex];
+				A[storeIndex] = temp;
+				
+				storeIndex++;
+			}
+		}
+		
+		// swap A[storeIndex] and A[hi], move pivot to its final place
+		temp = A[storeIndex];
+		A[storeIndex] = A[hi];
+		A[hi] = temp;
+		return storeIndex;
+	}
+	
+	
+	
 	public static <T extends Comparable<T>> T[] sort(T[] toSort) {
 		return innerSort(toSort, 0, toSort.length - 1);
 	}
