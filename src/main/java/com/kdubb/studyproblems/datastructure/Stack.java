@@ -1,18 +1,18 @@
 package com.kdubb.studyproblems.datastructure;
 
-public class Stack {
+public class Stack<T> {
 
-	private List items = new List();
+	private List<T> items = new List<T>();
 	
 	public int size() {
 		return items.size();
 	}
 	
-	public void push(Object value) {
+	public void push(T value) {
 		items.add(value);
 	}
 	
-	public Object pop() {
+	public T pop() {
 		return items.remove(items.size() - 1);
 	}
 }

@@ -7,17 +7,6 @@ import com.kdubb.studyproblems.datastructure.Stack;
 public class Main {
 	
 	public static void main(String[] args) {
-		Stack queue = new Stack();
-		
-		System.out.println("size --> " + queue.size());
-		
-		queue.push(5);
-		queue.push(1);
-		queue.push(3);
-
-		System.out.println("0 --> " + queue.pop());
-		System.out.println("1 --> " + queue.pop());
-		System.out.println("2 --> " + queue.pop());
 	}
 	
 	public static long fibonacciIterative(long n) {

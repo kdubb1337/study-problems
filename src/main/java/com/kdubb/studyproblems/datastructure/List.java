@@ -1,16 +1,16 @@
 package com.kdubb.studyproblems.datastructure;
 
-public class List {
+public class List<T> {
 
-	private ListItem head;
-	private ListItem tail;
+	private ListItem<T> head;
+	private ListItem<T> tail;
 	
 	public boolean isEmpty() {
 		return head == null;
 	}
 	
-	public void add(Object obj) {
-		ListItem item = new ListItem(obj);
+	public void add(T obj) {
+		ListItem<T> item = new ListItem<T>(obj);
 		
 		if(head == null || tail == null) {
 			head = item;
@@ -22,13 +22,22 @@ public class List {
 		}
 	}
 	
-	public Object remove(int position) {
+	public void addAll(List<T> obj) {
+		ListItem<T> item = obj.head;
+		
+		while(item != null) {
+			this.add(item.value);
+			item = item.next;
+		}
+	}
+	
+	public T remove(int position) {
 		if(head == null || position < 0) {
 			return null;
 		}
 		
 		int curPosition = 0;
-		ListItem item = head;
+		ListItem<T> item = head;
 		
 		while(curPosition < position - 1) {
 			curPosition++;
@@ -49,8 +58,8 @@ public class List {
 			return item.value;
 		}
 		else if(item.next != null) {
-			ListItem removed = item.next;
-			ListItem temp = removed.next;
+			ListItem<T> removed = item.next;
+			ListItem<T> temp = removed.next;
 			
 			if(temp == null) {
 				tail = item;
@@ -66,13 +75,13 @@ public class List {
 		return null;
 	}
 	
-	public Object get(int position) {
+	public T get(int position) {
 		if(head == null) {
 			return null;
 		}
 		
 		int curPosition = 0;
-		ListItem item = head;
+		ListItem<T> item = head;
 		
 		while(curPosition < position) {
 			curPosition++;
@@ -92,7 +101,7 @@ public class List {
 		}
 		
 		int size = 1;
-		ListItem item = head;
+		ListItem<T> item = head;
 		
 		while(item.next != null) {
 			size++;
@@ -102,11 +111,11 @@ public class List {
 		return size;
 	}
 	
-	private class ListItem {
-		private Object value;
-		private ListItem next;
+	private class ListItem<A extends T> {
+		private T value;
+		private ListItem<A> next;
 		
-		public ListItem(Object value) {
+		public ListItem(A value) {
 			this.value = value;
 		}
 	}
