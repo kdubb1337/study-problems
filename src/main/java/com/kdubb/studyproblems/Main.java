@@ -1,12 +1,12 @@
 package com.kdubb.studyproblems;
 
-import com.kdubb.studyproblems.datastructure.List;
-import com.kdubb.studyproblems.datastructure.Queue;
-import com.kdubb.studyproblems.datastructure.Stack;
-
 public class Main {
 	
 	public static void main(String[] args) {
+		int bitmask = 0x000F;
+        int val = 0x0030;
+        // prints "2"
+        System.out.println(val | bitmask);
 	}
 	
 	public static long fibonacciIterative(long n) {
