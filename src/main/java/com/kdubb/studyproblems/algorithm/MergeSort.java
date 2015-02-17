@@ -5,7 +5,7 @@ import com.kdubb.studyproblems.datastructure.List;
 public class MergeSort {
 
 	public static <T extends Comparable<T>> List<T> sort(List<T> toSort) {
-		if(toSort.isEmpty() || toSort.size() == 1) {
+		if(toSort.size() <= 1) {
 			return toSort;
 		}
 		

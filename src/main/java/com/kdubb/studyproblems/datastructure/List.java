@@ -119,4 +119,19 @@ public class List<T> {
 			this.value = value;
 		}
 	}
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[");
+		
+		if(!isEmpty())
+			sb.append(get(0));
+		
+		for(int i = 1; i < size(); i++) {
+			sb.append(", ").append(get(i));
+		}
+		
+		sb.append("]");
+		return sb.toString();
+	}
 }
